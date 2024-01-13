@@ -12,7 +12,7 @@ let limit = '20';
 // https://developer.spotify.com/documentation/general/guides/authorization-guide/
 function authorize() {
   const client_id = '335344394728464e9062f8d327bb88b8';
-  const redirect_uri = 'https://65a1bb9348eafc4bfea3a111--gilded-puppy-d6a3c7.netlify.app/';
+  const redirect_uri = 'https://gilded-puppy-d6a3c7.netlify.app/';
   const scopes = 'user-top-read playlist-modify-public playlist-modify-private';
 
 // Store the date
