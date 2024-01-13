@@ -260,4 +260,9 @@ function initialize() {
   } else {
     disableControls();
   }
+
+
+  if (access_token) {
+    $('.container').hide();
+  }
 });

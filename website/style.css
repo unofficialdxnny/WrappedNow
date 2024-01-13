@@ -4,7 +4,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow: hidden;
+    /* overflow: hidden; */
+    
   }
   
   /* Apply a basic font and color to the entire page */
@@ -14,6 +15,9 @@
     line-height: 1.6;
     color: #333;
     background:linear-gradient(120deg, #1db954, #191414);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: fixed;
   }
 
 
