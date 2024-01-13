@@ -1,9 +1,48 @@
-/* 
+@import url('https://fonts.googleapis.com/css2?family=Salsa&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  /* Apply a basic font and color to the entire page */
+  body {
+    font-family: 'Salsa', cursive;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background:linear-gradient(120deg, #1db954, #191414);
+  }
 
 
-
-
-.button {
+  /* controls container */
+  .container {
+    width: 300px;
+    margin: 50px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white background */
+    backdrop-filter: blur(10px); /* Apply a blur effect */
+  }
+  
+  h1 {
+    color: #00DA5A;
+  }
+  
+  p {
+    color: #333;
+  }
+  
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .button {
     display: flex;
     background-color: #00DA5A;
     color: #ffffff;
@@ -27,73 +66,14 @@
   }
   
   .button:hover {
-    box-shadow: none;
+    background-color: #049741;
   }
   
-  
-  
-  */
 
+#timeForm {
+    background-color: transparent;
+}
+#timeEntry {
+    background-color: transparent;
 
-  body {
-    background-color: #e8f5e9;
-  }
-  
-  .artist {
-    display: inline-block;
-    padding: 10px;
-  }
-  
-  img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-  
-  h4 {
-    margin-top: 0px;
-  }
-  
-  .track {
-    display: inline-block;
-    padding: 10px;
-  }
-  
-  .sidebar {
-    min-width: 250px;
-  }
-  
-  #title {
-    margin-bottom: 0px;
-  }
-  
-  #author {
-    margin-top: 0px;
-  }
-  
-  #results-container {
-    text-align: center;
-  }
-  
-  .item {
-    text-align: center;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  @media only screen and (max-width: 991px) and (min-width: 768px) {
-    img {
-      width: 100px;
-      height: 100px;
-    }
-  }
-  
-  @media only screen and (max-width: 767px) {
-    img {
-      width: 200px;
-      height: 200px;
-    }
-  }
+}

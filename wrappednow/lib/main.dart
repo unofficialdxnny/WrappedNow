@@ -28,7 +28,7 @@ class _MyWebViewState extends State<MyWebView> {
         title: Text('Spotify Stats'),
       ),
       body: WebView(
-        initialUrl: 'https://dragongr.github.io/spotify-stats/', // Replace with your web app URL
+        initialUrl: 'http://127.0.0.1:5500/WEB/index.html', // Replace with your web app URL
         javascriptMode: JavascriptMode.unrestricted,
       ),
     );
