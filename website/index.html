@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>unofficialdxnny | WrappedNow</title>
+    <meta name="viewport" content="width=device-width", initial-scale="1">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <!-- JQuery -->
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+<!--     
+    <button class="button"> 
+        <svg viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Spotify-color</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Color-" transform="translate(-200.000000, -460.000000)" fill="#ffffff"> <path d="M238.16,481.36 C230.48,476.8 217.64,476.32 210.32,478.6 C209.12,478.96 207.92,478.24 207.56,477.16 C207.2,475.96 207.92,474.76 209,474.4 C217.52,471.88 231.56,472.36 240.44,477.64 C241.52,478.24 241.88,479.68 241.28,480.76 C240.68,481.6 239.24,481.96 238.16,481.36 M237.92,488.08 C237.32,488.92 236.24,489.28 235.4,488.68 C228.92,484.72 219.08,483.52 211.52,485.92 C210.56,486.16 209.48,485.68 209.24,484.72 C209,483.76 209.48,482.68 210.44,482.44 C219.2,479.8 230,481.12 237.44,485.68 C238.16,486.04 238.52,487.24 237.92,488.08 M235.04,494.68 C234.56,495.4 233.72,495.64 233,495.16 C227.36,491.68 220.28,490.96 211.88,492.88 C211.04,493.12 210.32,492.52 210.08,491.8 C209.84,490.96 210.44,490.24 211.16,490 C220.28,487.96 228.2,488.8 234.44,492.64 C235.28,493 235.4,493.96 235.04,494.68 M224,460 C210.8,460 200,470.8 200,484 C200,497.2 210.8,508 224,508 C237.2,508 248,497.2 248,484 C248,470.8 237.32,460 224,460" id="Spotify"> </path> </g> </g> </g></svg>
+        Continue with Spotify 
+        </button> -->
+
+        <br>
+        <div class="ui doubling stackable grid container">
+           <div class="three wide column centered sidebar">
+              <div class="ui segments centered">
+                 <div class="ui segment">
+                    <p id="instructions">
+                       <br><i class="music icon"></i>Please authenticate with your Spotify account to see your top tracks and artists.
+                    </p>
+                    <p>
+                       <small><i class="circle icon"></i>Only your listening activity is accessed&mdash;no data is stored</small>
+                    </p>
+                 </div>
+                 <div class="ui padded segment" id="login">
+                    <button class="ui black fluid button" id="login-button" onclick="authorize()"><i class="sync icon"></i>Login</button>
+                 </div>
+                 <div class="ui padded segment" id="button-segment">
+                    <button class="ui black fluid button" id="track-button" onclick="getTopTracks()"><i class="sync icon"></i>Fetch top tracks</button>
+                    <br>
+                    <button class="ui black fluid button" id="artist-button" onclick="getTopArtists()"><i class="sync icon"></i>Fetch top artists</button>
+                 </div>
+                 <div class="ui padded segment" id="timeForm">
+                    <div class="ui form">
+                       <div class="grid" id="timeEntry">
+                          <p>Time:</p>
+                          <div class="field">
+                             <div class="ui radio checkbox">
+                                <input type="radio" name="time" value="short_term" checked="checked">
+                                <label>Last 4 weeks</label>
+                             </div>
+                          </div>
+                          <div class="field">
+                             <div class="ui radio checkbox">
+                                <input type="radio" name="time" value="medium_term">
+                                <label>Last 6 months</label>
+                             </div>
+                          </div>
+                          <div class="field">
+                             <div class="ui radio checkbox">
+                                <input type="radio" name="time" value="long_term">
+                                <label>All time</label>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="ui padded segment form" id="numForm">
+                    <p id="number">Number of results: 20</p>
+                    <input type="range" min="1" max="50" value="20" class="slider" id="numResponses">
+                 </div>
+              </div>
+           </div>
+           <div class="twelve wide column centered">
+              <br>
+              <div class="ui eight column centered" id="results-container">
+                 <div id="results-header"></div>
+                 <br>
+                 <div class="ui stackable five column grid container content" id="results"></div>
+              </div>
+           </div>
+        </div>
+
+</body>
+</html>
