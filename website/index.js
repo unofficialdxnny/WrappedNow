@@ -115,13 +115,18 @@ function getTopArtists() {
         $('#artist-button').removeClass("loading");
         $('#results').empty();
         $('#results-header').html('<h2>Top Artists</h2>');
-        let resultsHtml = '';
+        let resultsHtml = '<div class="ui stackable three column grid container content" id="results">';
         response.items.forEach((item, i) => {
-          let name = item.name;
-          let url = item.external_urls.spotify;
-          let image = item.images[1].url;
-          resultsHtml += '<div class="column wide artist item"><a href="' + url + '" target="_blank"><img src="' + image + '"></a><h4 class="title">' + (i + 1) + '. ' + name + '</h4></div>';
+            // ... (Existing code)
+            resultsHtml += `
+                <div class="column artist item">
+                    <a href="${url}" target="_blank">
+                        <img src="${image}" class="ui image">
+                    </a>
+                    <h4 class="title">${i + 1}. ${name}</h4>
+                </div>`;
         });
+        resultsHtml += '</div>';
         $('#results').html(resultsHtml);
 
         artistsdisplayed = true;
@@ -155,21 +160,22 @@ function getTopTracks() {
         playlist_uris = [];
         $('#results').empty();
         $('#results-header').html('<h2>Top Tracks</h2>');
-        let resultsHtml = '';
-
+        let resultsHtml = '<div class="ui stackable three column grid container content" id="results">';
         if (response.items.length === 0) {
-          resultsHtml = '<p>No top tracks found.</p>';
+            resultsHtml += '<p>No top tracks found.</p>';
         } else {
-          response.items.forEach((item, i) => {
-            playlist_uris.push(item.uri);
-            let trackName = item.name;
-            let artistName = item.artists[0].name;
-            let url = item.external_urls.spotify;
-            let image = item.album.images[1].url;
-            resultsHtml += '<div class="column wide track item"><a href="' + url + '" target="_blank"><img src="' + image + '"></a><h4>' + (i + 1) + '. ' + trackName + ' <br>' + artistName + ' </h4></div>';
-          });
+            response.items.forEach((item, i) => {
+                // ... (Existing code)
+                resultsHtml += `
+                    <div class="column track item">
+                        <a href="${url}" target="_blank">
+                            <img src="${image}" class="ui image">
+                        </a>
+                        <h4>${i + 1}. ${trackName} <br> ${artistName}</h4>
+                    </div>`;
+            });
         }
-
+        resultsHtml += '</div>';
         $('#results').html(resultsHtml);
 
         songsdisplayed = true;
