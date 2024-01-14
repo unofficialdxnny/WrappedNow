@@ -257,7 +257,7 @@ function initialize() {
   if (access_token) {
     getUserId();
     enableControls();
-    $('#button-segment').show();
+    $('.button').show();
 
   } else {
     disableControls();
@@ -268,7 +268,7 @@ function initialize() {
   if (access_token) {
     $('.container').hide();
   } else {
-    $('#button-segment').hide();
+    $('.button').hide();
 
 
 
