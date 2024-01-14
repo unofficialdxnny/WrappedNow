@@ -65,8 +65,47 @@ body {
     font-size: 15px;
 }
 
+/* Add styles for the right results section */
 .results-section {
     margin-left: 60px; /* Adjust the margin to create space between the sections */
-    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: calc(100vh - 20px); /* Adjust the height to leave space for the top margin */
     overflow-y: auto;
+}
+
+.column.artist.item,
+.column.track.item {
+    flex: 0 0 calc(33.33% - 20px); /* Three cards per row with spacing */
+    margin: 10px;
+    text-align: center;
+}
+
+.column.artist.item img,
+.column.track.item img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.column.artist.item h4,
+.column.track.item h4 {
+    margin-top: 0px;
+    font-size: 14px;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 767px) {
+    .column.artist.item,
+    .column.track.item {
+        flex: 0 0 calc(50% - 20px); /* Two cards per row for smaller screens */
+    }
+
+    .column.artist.item h4,
+    .column.track.item h4 {
+        font-size: 16px;
+    }
 }
