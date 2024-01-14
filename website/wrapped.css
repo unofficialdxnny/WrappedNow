@@ -204,6 +204,7 @@ h4 {
     flex-wrap: wrap; /* Allow results to wrap to the next line */
     justify-content: center;
     align-items: center;
+    width: 100%;
   }
   
   /* Add styles for the individual result items */
