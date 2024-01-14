@@ -22,6 +22,14 @@
 
    -->
 
+   <div class="buttons">
+  
+    <div class="ui padded segment" id="button-segment">
+      <button class="ui black fluid button" id="track-button" onclick="getTopTracks()"><i class="sync icon"></i>Fetch top tracks</button>
+      <br>
+      <button class="ui black fluid button" id="artist-button" onclick="getTopArtists()"><i class="sync icon"></i>Fetch top artists</button>
+   </div>
+
     <div class="container">
 
       <div class="ui doubling stackable grid container">
@@ -84,7 +92,16 @@
       </div>
       </div>
       </div>
-
+      <div class="twelve wide column centered">
+        <br>
+        <div class="ui eight column centered" id="results-container">
+           <div id="results-header"></div>
+           <br>
+           <div class="ui stackable five column grid container content" id="results"></div>
+        </div>
+      </div>
+      </div>
+        
 
 
         <script src="./script.js"></script>

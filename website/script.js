@@ -265,9 +265,9 @@ function initialize() {
   }
 
 
-  // if (access_token) {
-  //   $('.container').hide();
-  //   $('#initialButtons').show();
+  if (access_token) {
+    $('.container').hide();
+    $('.buttons').show();
 
-  // }
+  }
 });
