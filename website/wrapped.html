@@ -7,32 +7,25 @@
     <link rel="stylesheet" href="wrapped.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
 </head>
 <body class="fadeIn">
 
-
-    <div class="header-image">
-        <img src="https://images.ctfassets.net/c1zhnszcah7h/1tPgk5Uy2bla6QfvKpdcW7/45ab8b3957f3a04f9710babbdca03b76/Designing_For_Data_Header_-_Part_2_2x.png?w=1000&q=96" alt="Header Image">
+    <!-- Icons section on the left -->
+    <div class="icons-section">
+        <div class="icons">
+            <i id="track-button" onclick="getTopTracks()" class="ion-person"></i>
+            <br>
+            <i id="artist-button" onclick="getTopArtists()" class="ion-ios-musical-notes"></i>
+            <br>
+            <div class="ui padded segment form" id="numForm">
+                <input type="range" min="1" max="50" value="20" class="slider" id="numResponses">
+                <p id="number">Results: 20</p>
+            </div>
+        </div>
     </div>
 
-        
-    <div class="icons">
-        <i id="track-button" onclick="getTopTracks()" class="ion-person"></i>
-<br>
-        <i id="artist-button" onclick="getTopArtists()" class="ion-ios-musical-notes"></i>
-<br>
-        <div class="ui padded segment form" id="numForm">
-            <input type="range" min="1" max="50" value="20" class="slider" id="numResponses">
-
-            <p id="number">Results: 20</p>
-        </div>
-        </div>
-        </div>
-
-    </div>
-
-    <div class="results-wrapper">
+    <!-- Results section on the right -->
+    <div class="results-section">
         <div class="ui eight column centered" id="results-container">
             <div id="results-header"></div>
             <br>
