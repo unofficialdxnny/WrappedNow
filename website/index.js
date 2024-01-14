@@ -6,7 +6,7 @@ let artistsdisplayed = false;
 let time_range = 'short_term';
 let time_range_display = 'last 4 weeks';
 let playlist_uris = [];
-let limit = '50';
+let limit = '20';
 
 // Authorization. Key from spotify api website, must send a waypoint through their settings
 // https://developer.spotify.com/documentation/general/guides/authorization-guide/
@@ -239,19 +239,19 @@ function disableControls() {
 
 // add some listeners to the controls
 // Again, "id=$"
-// function initialize() {
-//   $('#timeForm input').on('change', function() {
-//     updateRange();
-//     refresh();
-//   });
-//   const slider = document.getElementById("numResponses");
-//   slider.oninput = function() {
-//     limit = $('#numResponses').val().toString();
-//     $('#number').html("Results: " + limit);
-//   }
+function initialize() {
+  $('#timeForm input').on('change', function() {
+    updateRange();
+    refresh();
+  });
+  const slider = document.getElementById("numResponses");
+  slider.oninput = function() {
+    limit = $('#numResponses').val().toString();
+    $('#number').html("Results: " + limit);
+  }
 
-//   $('#numResponses').on('change', refresh);
-// }
+  $('#numResponses').on('change', refresh);
+}
 
   // Enable or disable control based on user's authentication
   if (access_token) {
