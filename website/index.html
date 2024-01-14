@@ -16,92 +16,56 @@
 </head>
 <body>
 
-  <!-- <button class="ui black fluid button" id="track-button" onclick="getTopTracks()"><i class="sync icon"></i>Fetch top tracks</button>
-<br>
-<button class="ui black fluid button" id="artist-button" onclick="getTopArtists()"><i class="sync icon"></i>Fetch top artists</button>
-
-   -->
-
-   <div class="buttons-user">
-  
-    <div class="ui padded segment" id="button-segment-user">
-      <button class="ui black fluid button" id="track-button" onclick="getTopTracks()"><i class="sync icon"></i>Fetch top tracks</button>
-      <br>
-      <button class="ui black fluid button" id="artist-button" onclick="getTopArtists()"><i class="sync icon"></i>Fetch top artists</button>
-   </div>
-
     <div class="container">
-
-      <div class="ui doubling stackable grid container">
-        <div class="three wide column centered sidebar">
-           <div class="ui segments centered">
-              <div class="ui segment">
         <h1>WrappedNow</h1>
         <p id="instructions">Ensure you are logged in to start seeing content!</p>
-      </div>
+    
         <div class="buttons">
-          <div class="ui padded segment" id="login">
           <button onclick="authorize()" class="button">Continue with Spotify</button>
-          </div>
-          <div class="ui padded segment" id="button-segment">
-            <button class="ui black fluid button" id="track-button" onclick="getTopTracks()"><i class="sync icon"></i>Fetch top tracks</button>
-            <br>
-            <button class="ui black fluid button" id="artist-button" onclick="getTopArtists()"><i class="sync icon"></i>Fetch top artists</button>
-         </div>
+          <button onclick="getTopTracks()" class="button">Top Tracks</button>
+          <button onclick="getTopArtists()" class="button">Top Artists</button>
+        </div>
     
-        
+        <br><br>
     
-      </div>
-
       
-      <div class="ui padded segment" id="timeForm">
-        <div class="ui form">
-          <div class="grid" id="timeEntry">
-            <p>Time:</p>
-            <div class="field">
-              <div class="ui radio checkbox">
-                <input type="radio" name="time" value="short_term" checked="checked">
-                <label>Last 4 weeks</label>
+        <div class="ui padded segment" id="timeForm">
+          <div class="ui form">
+            <div class="grid" id="timeEntry">
+              <p>Time:</p>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="time" value="short_term" checked="checked">
+                  <label>Last 4 weeks</label>
+                </div>
               </div>
-            </div>
-            <div class="field">
-              <div class="ui radio checkbox">
-                <input type="radio" name="time" value="medium_term">
-                <label>Last 6 months</label>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="time" value="medium_term">
+                  <label>Last 6 months</label>
+                </div>
               </div>
-            </div>
-            <div class="field">
-              <div class="ui radio checkbox">
-                <input type="radio" name="time" value="long_term">
-                <label>All time</label>
+              <div class="field">
+                <div class="ui radio checkbox">
+                  <input type="radio" name="time" value="long_term">
+                  <label>All time</label>
+                </div>
               </div>
             </div>
           </div>
         </div>
+    
       </div>
-      <div class="ui padded segment form" id="numForm">
-        <p id="number">Number of results: 20</p>
-        <input type="range" min="1" max="50" value="20" class="slider" id="numResponses">
-     </div>
+
+<div class="twelve wide column centered">
+  <br>
+  <div class="ui eight column centered" id="results-container">
+     <div id="results-header"></div>
+     <br>
+     <div class="ui stackable five column grid container content" id="results"></div>
   </div>
 </div>
-
-    </div>
-
-      </div>
-      </div>
-      </div>
-      </div>
-      <div class="twelve wide column centered">
-        <br>
-        <div class="ui eight column centered" id="results-container">
-           <div id="results-header"></div>
-           <br>
-           <div class="ui stackable five column grid container content" id="results"></div>
-        </div>
-      </div>
-      </div>
-        
+</div>
 
 
         <script src="./script.js"></script>

@@ -257,21 +257,7 @@ function initialize() {
   if (access_token) {
     getUserId();
     enableControls();
-    
-
   } else {
     disableControls();
-    
-  }
-
-
-  if (access_token) {
-    $('.container').hide();
-    $('#button-segment-user').show();
-
-
-  } else {
-    $('#button-segment-user').hide();
-    
   }
 });
