@@ -98,101 +98,103 @@ function getUserId() {
     alert('Please log in to Spotify.');
   }
 }
-
+// Updated getTopArtists function
 function getTopArtists() {
   $('#artist-button').addClass("loading");
   if (access_token) {
-    $.ajax({
-      url: 'https://api.spotify.com/v1/me/top/artists',
-      data: {
-        limit: limit,
-        time_range: time_range,
-      },
-      headers: {
-        'Authorization': 'Bearer ' + access_token,
-      },
-      success: function(response) {
-        $('#artist-button').removeClass("loading");
-        $('#results').empty();
-        $('#results-header').html('<h2>Top Artists</h2>');
-        let resultsHtml = '<div class="ui stackable three column grid container content" id="results">';
-        response.items.forEach((item, i) => {
-            // ... (Existing code)
-            resultsHtml += `
-                <div class="column artist item">
-                    <a href="${url}" target="_blank">
-                        <img src="${image}" class="ui image">
-                    </a>
-                    <h4 class="title">${i + 1}. ${name}</h4>
-                </div>`;
-        });
-        resultsHtml += '</div>';
-        $('#results').html(resultsHtml);
-
-        artistsdisplayed = true;
-        songsdisplayed = false;
-        checkWidth();
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        ifError(jqXHR.status);
-      },
-    });
+      $.ajax({
+          url: 'https://api.spotify.com/v1/me/top/artists',
+          data: {
+              limit: limit,
+              time_range: time_range,
+          },
+          headers: {
+              'Authorization': 'Bearer ' + access_token,
+          },
+          success: function(response) {
+              $('#artist-button').removeClass("loading");
+              $('#results-container').empty();
+              let resultsHtml = '<div class="ui stackable three column grid container content" id="results">';
+              response.items.forEach((item, i) => {
+                  let name = item.name;
+                  let url = item.external_urls.spotify;
+                  let image = item.images[1].url;
+                  resultsHtml += `
+                      <div class="column artist item">
+                          <a href="${url}" target="_blank">
+                              <img src="${image}" class="ui image">
+                          </a>
+                          <h4 class="title">${i + 1}. ${name}</h4>
+                      </div>`;
+              });
+              resultsHtml += '</div>';
+              $('#results-container').html('<h2>Top Artists</h2>' + resultsHtml);
+              artistsdisplayed = true;
+              songsdisplayed = false;
+              checkWidth();
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+              ifError(jqXHR.status);
+          },
+      });
   } else {
-    alert('Please log in to Spotify.');
+      alert('Please log in to Spotify.');
   }
 }
 
-// Get user's top songs
+// Updated getTopTracks function
 function getTopTracks() {
   $('#track-button').addClass("loading");
   if (access_token) {
-    $.ajax({
-      url: 'https://api.spotify.com/v1/me/top/tracks',
-      data: {
-        limit: limit,
-        time_range: time_range,
-      },
-      headers: {
-        'Authorization': 'Bearer ' + access_token,
-      },
-      success: function(response) {
-        $('#track-button').removeClass("loading");
-        playlist_uris = [];
-        $('#results').empty();
-        $('#results-header').html('<h2>Top Tracks</h2>');
-        let resultsHtml = '<div class="ui stackable three column grid container content" id="results">';
-        if (response.items.length === 0) {
-            resultsHtml += '<p>No top tracks found.</p>';
-        } else {
-            response.items.forEach((item, i) => {
-                // ... (Existing code)
-                resultsHtml += `
-                    <div class="column track item">
-                        <a href="${url}" target="_blank">
-                            <img src="${image}" class="ui image">
-                        </a>
-                        <h4>${i + 1}. ${trackName} <br> ${artistName}</h4>
-                    </div>`;
-            });
-        }
-        resultsHtml += '</div>';
-        $('#results').html(resultsHtml);
-
-        songsdisplayed = true;
-        artistsdisplayed = false;
-        checkWidth();
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        if (jqXHR.status === 401) {
-          ifError(jqXHR.status);
-        } else {
-          $('#track-button').removeClass("loading");
-          $('#results').html('<p>Error retrieving top tracks. Please try again later.</p>');
-        }
-      },
-    });
+      $.ajax({
+          url: 'https://api.spotify.com/v1/me/top/tracks',
+          data: {
+              limit: limit,
+              time_range: time_range,
+          },
+          headers: {
+              'Authorization': 'Bearer ' + access_token,
+          },
+          success: function(response) {
+              $('#track-button').removeClass("loading");
+              playlist_uris = [];
+              $('#results-container').empty();
+              let resultsHtml = '<div class="ui stackable three column grid container content" id="results">';
+              if (response.items.length === 0) {
+                  resultsHtml += '<p>No top tracks found.</p>';
+              } else {
+                  response.items.forEach((item, i) => {
+                      playlist_uris.push(item.uri);
+                      let trackName = item.name;
+                      let artistName = item.artists[0].name;
+                      let url = item.external_urls.spotify;
+                      let image = item.album.images[1].url;
+                      resultsHtml += `
+                          <div class="column track item">
+                              <a href="${url}" target="_blank">
+                                  <img src="${image}" class="ui image">
+                              </a>
+                              <h4>${i + 1}. ${trackName} <br> ${artistName}</h4>
+                          </div>`;
+                  });
+              }
+              resultsHtml += '</div>';
+              $('#results-container').html('<h2>Top Tracks</h2>' + resultsHtml);
+              songsdisplayed = true;
+              artistsdisplayed = false;
+              checkWidth();
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+              if (jqXHR.status === 401) {
+                  ifError(jqXHR.status);
+              } else {
+                  $('#track-button').removeClass("loading");
+                  $('#results-container').html('<p>Error retrieving top tracks. Please try again later.</p>');
+              }
+          },
+      });
   } else {
-    alert('Please log in to Spotify.');
+      alert('Please log in to Spotify.');
   }
 }
 
