@@ -86,49 +86,46 @@ body {
 
 /* test */
 
+/* Updated styles for responsive list items */
 .column.artist.item,
 .column.track.item {
-    display: inline-block;
+    display: block;
     padding: 10px;
     text-align: center;
 }
 
 .column.artist.item img,
 .column.track.item img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
+    width: 100%;
+    max-width: 150px;
+    height: auto;
     border-radius: 10px;
 }
 
 .column.artist.item h4,
 .column.track.item h4 {
     margin-top: 0px;
+    font-size: 14px;
 }
 
 /* Media query for smaller screens */
-@media only screen and (max-width: 991px) and (min-width: 768px) {
-    .column.artist.item img,
-    .column.track.item img {
-        width: 100px;
-        height: 100px;
-    }
-
-    .column.artist.item h4,
-    .column.track.item h4 {
-        font-size: 14px;
-    }
-}
-
 @media only screen and (max-width: 767px) {
     .column.artist.item img,
     .column.track.item img {
-        width: 200px;
-        height: 200px;
+        max-width: 100%;
     }
 
     .column.artist.item h4,
     .column.track.item h4 {
         font-size: 16px;
     }
+}
+
+
+.results-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Adjust the height as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
 }
