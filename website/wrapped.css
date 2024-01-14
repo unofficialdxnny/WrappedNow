@@ -196,22 +196,22 @@ h4 {
   white-space: nowrap;
 }
 
-  
+
+
   /* Add styles for the results grid */
-  #results {
-    display: inline-block;
-    white-space: nowrap;
+#results {
+    display: flex;
+    flex-wrap: wrap; /* Allow results to wrap to the next line */
+    justify-content: center;
   }
   
   /* Add styles for the individual result items */
   .column.artist.item,
   .column.track.item {
-    display: inline-block;
-    width: calc(20% - 20px); /* Adjust the width as needed with proper spacing */
+    flex: 0 0 calc(20% - 20px); /* Adjust the width as needed with proper spacing */
     margin: 10px;
     text-align: center;
     white-space: normal; /* Allow text to wrap within the card */
-    vertical-align: top;
   }
   
   .column.artist.item img,
@@ -232,7 +232,7 @@ h4 {
   @media only screen and (max-width: 767px) {
     .column.artist.item,
     .column.track.item {
-      width: calc(40% - 20px); /* Adjust the width for smaller screens */
+      flex: 0 0 calc(40% - 20px); /* Adjust the width for smaller screens */
     }
   
     .column.artist.item h4,
@@ -240,6 +240,9 @@ h4 {
       font-size: 16px;
     }
   }
+
+  
+  
 .item {
   text-align: center;
 }
