@@ -196,7 +196,9 @@ h4 {
   white-space: nowrap;
 }
 
-
+#results-container::-webkit-scrollbar {
+    width: 0px;
+}
 
   /* Add styles for the results grid */
 #results {
