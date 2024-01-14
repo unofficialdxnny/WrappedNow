@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Salsa&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Salsa', cursive;
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(120deg, #191414, #1db954, #191414);
+}
+
+.fadeIn {
+    opacity: 0;
+    visibility: hidden;
+    animation: fadeInAnimation 0.5s ease forwards;
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+
+.icons {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 3em; /* Adjust the font size as needed */
+    color: #ffffff; /* Set the color of the icons */
+}
+
+.ion-person:hover {
+    color: #b6b6b6;
+}
+
+.ion-ios-musical-notes:hover {
+    color: #b6b6b6;
+}
