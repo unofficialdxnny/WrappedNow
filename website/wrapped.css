@@ -276,41 +276,45 @@ h4 {
   }
 }
 
-
 @media only screen and (max-width: 767px) {
     .icons-section {
+        /* Adjust styles for the icons section on mobile */
         position: static;
+        top: auto;
+        left: auto;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-
-    .icons {
         flex-direction: row;
         align-items: center;
         justify-content: center;
     }
 
-    .icons i {
-        margin: 0 10px;
+    .icons {
+        /* Adjust font size for mobile */
+        font-size: 2em;
     }
 
     .results-section {
-        text-align: center;
+        /* Move results section below the icons section on mobile */
+        margin-top: 20px; /* Adjust as needed */
     }
-
+    
     #results-container {
+        /* Adjust styles for the results container on mobile */
         width: 100%;
-        margin: 20px;
+        margin: 20px; /* Adjust as needed */
     }
 
-    .ui.five.column.grid.container.content {
+    .ui.stackable.five.column.grid.container.content {
+        /* Adjust styles for the results grid on mobile */
+        display: flex;
         flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
     }
-
+    
     .column.artist.item,
     .column.track.item {
+        /* Adjust styles for the individual result items on mobile */
         flex: 0 0 calc(50% - 20px);
     }
 }
