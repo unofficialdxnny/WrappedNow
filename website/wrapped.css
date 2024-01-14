@@ -279,9 +279,9 @@ h4 {
 @media only screen and (max-width: 767px) {
     .icons-section {
         /* Adjust styles for the icons section on mobile */
-        position: static;
-        top: auto;
-        left: auto;
+        position: fixed;
+        top: 0;
+        left: 0;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -290,18 +290,19 @@ h4 {
 
     .icons {
         /* Adjust font size for mobile */
-        font-size: 2em;
+        font-size: 1.5em;
     }
 
     .results-section {
         /* Move results section below the icons section on mobile */
-        margin-top: 20px; /* Adjust as needed */
+        width: 75%;
+
     }
     
     #results-container {
         /* Adjust styles for the results container on mobile */
         width: 100%;
-        margin: 20px; /* Adjust as needed */
+        margin: 0%; /* Adjust as needed */
     }
 
     .ui.stackable.five.column.grid.container.content {
