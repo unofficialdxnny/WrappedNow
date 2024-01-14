@@ -86,53 +86,18 @@ body {
 
 /* test */
 
+.header-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /* Add styles for the results wrapper */
 .results-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50vh; /* Adjust the height as needed */
+    height: 50%; /* Adjust the height as needed */
     overflow-y: auto; /* Enable vertical scrolling */
-}
-
-/* Add styles for the results grid */
-#results {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-/* Add styles for the individual result items */
-.column.artist.item,
-.column.track.item {
-    flex: 0 0 calc(20% - 20px); /* Adjust the width as needed with proper spacing */
-    margin: 10px;
-    text-align: center;
-}
-
-.column.artist.item img,
-.column.track.item img {
-    width: 50%;
-    max-width: 50%;
-    height: auto;
-    border-radius: 10px;
-}
-
-.column.artist.item h4,
-.column.track.item h4 {
-    margin-top: 0px;
-    font-size: 14px;
-}
-
-/* Media query for smaller screens */
-@media only screen and (max-width: 767px) {
-    .column.artist.item,
-    .column.track.item {
-        flex: 0 0 calc(40% - 20px); /* Adjust the width for smaller screens */
-    }
-
-    .column.artist.item h4,
-    .column.track.item h4 {
-        font-size: 16px;
-    }
+    margin-bottom: 80px; /* Added margin-bottom for spacing */
 }
