@@ -51,3 +51,8 @@ body {
 .ion-ios-musical-notes:hover {
     color: #b6b6b6;
 }
+
+
+#number {
+    font-size: 15px;
+}

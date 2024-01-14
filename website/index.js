@@ -247,7 +247,7 @@ function initialize() {
   const slider = document.getElementById("numResponses");
   slider.oninput = function() {
     limit = $('#numResponses').val().toString();
-    $('#number').html("Number of results: " + limit);
+    $('#number').html("Results: " + limit);
   }
 
   $('#numResponses').on('change', refresh);
