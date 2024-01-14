@@ -257,7 +257,7 @@ function initialize() {
   if (access_token) {
     getUserId();
     enableControls();
-    $('.button').show();
+    $('.grid').hide();
 
   } else {
     disableControls();
@@ -265,12 +265,9 @@ function initialize() {
   }
 
 
-  if (access_token) {
-    $('.container').hide();
-  } else {
-    $('.button').hide();
+  // if (access_token) {
+  //   $('.container').hide();
+  //   $('#initialButtons').show();
 
-
-
-  }
+  // }
 });
