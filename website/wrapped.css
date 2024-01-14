@@ -65,47 +65,76 @@ body {
     font-size: 15px;
 }
 
-/* Add styles for the right results section */
-.results-section {
-    margin-left: 60px; /* Adjust the margin to create space between the sections */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    height: calc(100vh - 20px); /* Adjust the height to leave space for the top margin */
-    overflow-y: auto;
+#timeForm {
+    background-color: transparent;
+}
+#timeEntry {
+    background-color: transparent;
+
 }
 
-.column.artist.item,
-.column.track.item {
-    flex: 0 0 calc(33.33% - 20px); /* Three cards per row with spacing */
-    margin: 10px;
-    text-align: center;
+#results-header {
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white background */
+    backdrop-filter: blur(10px); /* Apply a blur effect */
 }
 
-.column.artist.item img,
-.column.track.item img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+.artist {
+  display: inline-block;
+  padding: 10px;
 }
 
-.column.artist.item h4,
-.column.track.item h4 {
-    margin-top: 0px;
-    font-size: 14px;
+img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-/* Media query for smaller screens */
+h4 {
+  margin-top: 0px;
+}
+
+.track {
+  display: inline-block;
+  padding: 10px;
+}
+
+.sidebar {
+  min-width: 250px;
+}
+
+#title {
+  margin-bottom: 0px;
+}
+
+#author {
+  margin-top: 0px;
+}
+
+#results-container {
+  text-align: center;
+}
+
+.item {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+  img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
 @media only screen and (max-width: 767px) {
-    .column.artist.item,
-    .column.track.item {
-        flex: 0 0 calc(50% - 20px); /* Two cards per row for smaller screens */
-    }
-
-    .column.artist.item h4,
-    .column.track.item h4 {
-        font-size: 16px;
-    }
+  img {
+    width: 200px;
+    height: 200px;
+  }
 }
