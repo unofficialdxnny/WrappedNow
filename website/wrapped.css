@@ -190,8 +190,56 @@ h4 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white background */
   backdrop-filter: blur(10px); /* Apply a blur effect */
+  max-width: 100%; /* Adjust the max-width as needed */
+  overflow-x: hidden;
+  overflow-y: auto; /* Enable vertical scrolling */
+  white-space: nowrap;
 }
 
+  
+  /* Add styles for the results grid */
+  #results {
+    display: inline-block;
+    white-space: nowrap;
+  }
+  
+  /* Add styles for the individual result items */
+  .column.artist.item,
+  .column.track.item {
+    display: inline-block;
+    width: calc(20% - 20px); /* Adjust the width as needed with proper spacing */
+    margin: 10px;
+    text-align: center;
+    white-space: normal; /* Allow text to wrap within the card */
+    vertical-align: top;
+  }
+  
+  .column.artist.item img,
+  .column.track.item img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .column.artist.item h4,
+  .column.track.item h4 {
+    margin-top: 0px;
+    font-size: 14px;
+  }
+  
+  /* Media query for smaller screens */
+  @media only screen and (max-width: 767px) {
+    .column.artist.item,
+    .column.track.item {
+      width: calc(40% - 20px); /* Adjust the width for smaller screens */
+    }
+  
+    .column.artist.item h4,
+    .column.track.item h4 {
+      font-size: 16px;
+    }
+  }
 .item {
   text-align: center;
 }
