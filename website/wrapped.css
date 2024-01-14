@@ -64,7 +64,7 @@ body {
 
 
 .artist {
-    display: inline-block;
+    display: list-item;
     padding: 10px;
   }
   
@@ -80,7 +80,7 @@ body {
   }
   
   .track {
-    display: inline-block;
+    display: list-item;
     padding: 10px;
   }
   
