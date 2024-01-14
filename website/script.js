@@ -257,22 +257,22 @@ function initialize() {
   if (access_token) {
     getUserId();
     enableControls();
-    $('#track-button').show();
-    $('#artist-button').show();
+    // $('#track-button').show();
+    // $('#artist-button').show();
   } else {
     disableControls();
     
   }
 
 
-  if (access_token) {
-    $('.container').hide();
-    $('#initialButtons').show();
+  // if (access_token) {
+  //   $('.container').hide();
+  //   $('#initialButtons').show();
 
-  } else {
-    $('#track-button').hide();
-    $('#artist-button').hide();
+  // } else {
+  //   $('#track-button').hide();
+  //   $('#artist-button').hide();
 
 
-  }
+  // }
 });
