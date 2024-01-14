@@ -257,22 +257,20 @@ function initialize() {
   if (access_token) {
     getUserId();
     enableControls();
-    // $('#track-button').show();
-    // $('#artist-button').show();
+    $('#button-segment').show();
+
   } else {
     disableControls();
     
   }
 
 
-  // if (access_token) {
-  //   $('.container').hide();
-  //   $('#initialButtons').show();
-
-  // } else {
-  //   $('#track-button').hide();
-  //   $('#artist-button').hide();
+  if (access_token) {
+    $('.container').hide();
+  } else {
+    $('#button-segment').hide();
 
 
-  // }
+
+  }
 });
