@@ -24,11 +24,8 @@ class _MyWebViewState extends State<MyWebView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Spotify Stats'),
-      ),
       body: WebView(
-        initialUrl: 'http://127.0.0.1:5500/WEB/index.html', // Replace with your web app URL
+        initialUrl: 'https://gilded-puppy-d6a3c7.netlify.app/', // Replace with your web app URL
         javascriptMode: JavascriptMode.unrestricted,
       ),
     );
