@@ -4,6 +4,69 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    font-family: 'Salsa', cursive;
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(120deg, #191414, #1db954, #191414);
+}
+
+
+
+
+
+
+
+.fadeIn {
+    opacity: 0;
+    visibility: hidden;
+    animation: fadeInAnimation 0.5s ease forwards;
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+
+.icons-section {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.icons {
+    font-size: 3em; /* Adjust the font size as needed */
+    color: #ffffff; /* Set the color of the icons */
+}
+
+.ion-person:hover,
+.ion-ios-musical-notes:hover {
+    color: #b6b6b6;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Salsa&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     /* overflow: hidden; */
     
   }
@@ -119,6 +182,14 @@ h4 {
 
 #results-container {
   text-align: center;
+  width: 1000px;
+  height: 500px;
+  margin: 50px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white background */
+  backdrop-filter: blur(10px); /* Apply a blur effect */
 }
 
 .item {
