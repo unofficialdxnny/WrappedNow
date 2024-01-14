@@ -89,6 +89,7 @@ function getUserId() {
       },
       success: function(response) {
         user_id = response.id;
+        console.log(response.id)
       },
       error: (jqXHR, textStatus, errorThrown) => {
         ifError(jqXHR.status);
