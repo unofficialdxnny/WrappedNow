@@ -86,18 +86,34 @@ body {
 
 /* test */
 
-/* Updated styles for responsive list items */
+/* Add styles for the results wrapper */
+.results-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Adjust the height as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Add styles for the results grid */
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Add styles for the individual result items */
 .column.artist.item,
 .column.track.item {
-    display: block;
-    padding: 10px;
+    flex: 0 0 calc(20% - 20px); /* Adjust the width as needed with proper spacing */
+    margin: 10px;
     text-align: center;
 }
 
 .column.artist.item img,
 .column.track.item img {
     width: 100%;
-    max-width: 150px;
+    max-width: 100%;
     height: auto;
     border-radius: 10px;
 }
@@ -110,22 +126,13 @@ body {
 
 /* Media query for smaller screens */
 @media only screen and (max-width: 767px) {
-    .column.artist.item img,
-    .column.track.item img {
-        max-width: 100%;
+    .column.artist.item,
+    .column.track.item {
+        flex: 0 0 calc(40% - 20px); /* Adjust the width for smaller screens */
     }
 
     .column.artist.item h4,
     .column.track.item h4 {
         font-size: 16px;
     }
-}
-
-
-.results-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Adjust the height as needed */
-    overflow-y: auto; /* Enable vertical scrolling */
 }
