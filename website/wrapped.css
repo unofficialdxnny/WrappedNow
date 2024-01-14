@@ -180,6 +180,13 @@ h4 {
   margin-top: 0px;
 }
 
+#number {
+    font-size: 10px;
+
+}
+
+
+
 #results-container {
   text-align: center;
   width: 1000px;
