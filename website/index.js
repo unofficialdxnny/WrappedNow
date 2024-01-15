@@ -89,10 +89,9 @@ function getUserId() {
       },
       success: function(response) {
         user_id = response.id;
-        console.log(response.id);
-        getCurrentlyPlaying();
+        console.log(response.id)
       },
-      error: function(jqXHR, textStatus, errorThrown) {
+      error: (jqXHR, textStatus, errorThrown) => {
         ifError(jqXHR.status);
       },
     });
@@ -100,50 +99,6 @@ function getUserId() {
     alert('Please log in to Spotify.');
   }
 }
-
-
-function getCurrentlyPlaying() {
-  if (access_token) {
-    $.ajax({
-      url: 'https://api.spotify.com/v1/me/player/currently-playing',
-      headers: {
-        'Authorization': 'Bearer ' + access_token
-      },
-      success: function(response) {
-        console.log('Currently Playing Response:', response);
-        if (response.item) {
-          displayCurrentlyPlaying(response.item);
-        } else {
-          console.log('No currently playing song.');
-        }
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        console.error('Error fetching currently playing song:', textStatus, errorThrown);
-        ifError(jqXHR.status);
-      },
-    });
-  } else {
-    alert('Please log in to Spotify.');
-  }
-}
-
-function displayCurrentlyPlaying(song) {
-  // Assuming you have a container with the id 'currently-playing-container' in your HTML
-  $('#currently-playing-container').html(`
-    <div id="currently-playing">
-      <img src="${song.album.images[0].url}" alt="Album Cover" class="album-cover">
-      <div class="song-details">
-        <h3>${song.name}</h3>
-        <p>By ${song.artists[0].name}</p>
-      </div>
-      <div class="progress-bar-container">
-        <div class="progress-bar" style="width: ${(song.progress_ms / song.duration_ms) * 100}%"></div>
-      </div>
-    </div>
-  `);
-}
-
-
 // Updated getTopArtists function
 function getTopArtists() {
   $('#artist-button').addClass("loading");
@@ -271,37 +226,43 @@ $(document).ready(function() {
   initialize();
   access_token = getHashValue('access_token');
 
-  function enableControls() {
-    $('#instructions').css('display', 'none');
-    $('#login').css('display', 'none');
-    $('#button-segment').removeClass("disabled");
-    $('#timeForm').removeClass("disabled");
-    $('#numForm').removeClass("disabled");
+// Have some funcs enabled.
+function enableControls() {
+  $('#instructions').css('display', 'none');
+  $('#login').css('display', 'none');
+  $('#button-segment').removeClass("disabled");
+  $('#timeForm').removeClass("disabled");
+  $('#numForm').removeClass("disabled");
+}
+
+// Have the buttons disabled. These are being called
+// On HTML with the "id=$"
+// I shouldn't been telling you that. It's 101 HTML
+function disableControls() {
+  $('#button-segment').addClass("disabled");
+  $('#track-button').addClass("disabled");
+  $('#artist-button').addClass("disabled");
+  $('#timeForm').addClass("disabled");
+  $('#numForm').addClass("disabled");
+}
+
+// add some listeners to the controls
+// Again, "id=$"
+function initialize() {
+  $('#timeForm input').on('change', function() {
+    updateRange();
+    refresh();
+  });
+  const slider = document.getElementById("numResponses");
+  slider.oninput = function() {
+    limit = $('#numResponses').val().toString();
+    $('#number').html("Results: " + limit);
   }
 
-  function disableControls() {
-    $('#button-segment').addClass("disabled");
-    $('#track-button').addClass("disabled");
-    $('#artist-button').addClass("disabled");
-    $('#timeForm').addClass("disabled");
-    $('#numForm').addClass("disabled");
-  }
+  $('#numResponses').on('change', refresh);
+}
 
-  function initialize() {
-    $('#timeForm input').on('change', function() {
-      updateRange();
-      refresh();
-    });
-
-    const slider = document.getElementById("numResponses");
-    slider.oninput = function() {
-      limit = $('#numResponses').val().toString();
-      $('#number').html("Results: " + limit);
-    }
-
-    $('#numResponses').on('change', refresh);
-  }
-
+  // Enable or disable control based on user's authentication
   if (access_token) {
     getUserId();
     enableControls();
