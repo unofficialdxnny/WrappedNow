@@ -199,6 +199,8 @@ function getTopTracks() {
   }
 }
 
+console.log(resultsHtml);  
+
 // error mechanism
 function ifError(error) {
   retryLogin();
