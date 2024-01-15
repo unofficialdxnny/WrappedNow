@@ -81,28 +81,42 @@ function checkWidth() {
 // Do a quick check if user has signed in,
 // If user hasn't, prompt him to log in.
 function getUserId() {
-  if (access_token) {
-      $.ajax({
-          url: 'https://api.spotify.com/v1/me',
-          headers: {
-              'Authorization': 'Bearer ' + access_token
-          },
-          success: function(response) {
-              user_id = response.id;
-              console.log(response.id);
-
-              // Update the Spotify Now Playing content with the new user_id
-              updateSpotifyNP(user_id);
-          },
-          error: function(jqXHR, textStatus, errorThrown) {
-              ifError(jqXHR.status);
-          },
-      });
-  } else {
-      alert('Please log in to Spotify.');
-  }
+  return new Promise((resolve, reject) => {
+      if (access_token) {
+          $.ajax({
+              url: 'https://api.spotify.com/v1/me',
+              headers: {
+                  'Authorization': 'Bearer ' + access_token
+              },
+              success: function(response) {
+                  user_id = response.id;
+                  console.log(response.id);
+                  resolve(user_id);
+              },
+              error: function(jqXHR, textStatus, errorThrown) {
+                  ifError(jqXHR.status);
+                  reject();
+              },
+          });
+      } else {
+          alert('Please log in to Spotify.');
+          reject();
+      }
+  });
 }
 
+// Call getUserId after obtaining the access token
+// Example: In the code where you handle the access token, add this line:
+// access_token = getHashValue('access_token');
+
+getUserId().then((user_id) => {
+  // Update the Spotify Now Playing content with the new user_id
+  updateSpotifyNP(user_id);
+}).catch(() => {
+  // Handle errors if necessary
+});
+
+// ...
 
 function updateSpotifyNP(user_id) {
   const spotifyNPElement = $('#spotifynp');
