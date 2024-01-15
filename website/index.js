@@ -109,6 +109,7 @@ function getCurrentlyPlaying() {
         'Authorization': 'Bearer ' + access_token
       },
       success: function(response) {
+        console.log('Currently Playing Response:', response);
         if (response.item) {
           displayCurrentlyPlaying(response.item);
         } else {
@@ -116,6 +117,7 @@ function getCurrentlyPlaying() {
         }
       },
       error: function(jqXHR, textStatus, errorThrown) {
+        console.error('Error fetching currently playing song:', textStatus, errorThrown);
         ifError(jqXHR.status);
       },
     });
@@ -125,12 +127,17 @@ function getCurrentlyPlaying() {
 }
 
 function displayCurrentlyPlaying(song) {
-  // Update your HTML or use a modal to display the currently playing song information
-  // For example, you can append the information to the header section
-  $('.header').append(`
+  // Assuming you have a container with the id 'currently-playing-container' in your HTML
+  $('#currently-playing-container').html(`
     <div id="currently-playing">
-      <h3>Currently Playing:</h3>
-      <p>${song.name} by ${song.artists[0].name}</p>
+      <img src="${song.album.images[0].url}" alt="Album Cover" class="album-cover">
+      <div class="song-details">
+        <h3>${song.name}</h3>
+        <p>By ${song.artists[0].name}</p>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" style="width: ${(song.progress_ms / song.duration_ms) * 100}%"></div>
+      </div>
     </div>
   `);
 }
