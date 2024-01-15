@@ -180,7 +180,7 @@ function getTopTracks() {
                   });
               }
               resultsHtml += '</div>';
-              $('#results-container#results').html('<h2>Top Tracks</h2>' + resultsHtml);
+              $('#results-container').html('<h2>Top Tracks</h2>' + resultsHtml);
               songsdisplayed = true;
               artistsdisplayed = false;
               checkWidth();
