@@ -8,35 +8,15 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
-<body class="fadeIn">
-
+<body>
     
-    <!-- Icons section on the left -->
-    <div class="icons-section">
-        <div class="icons">
-            <i id="track-button" onclick="getTopTracks()" class="ion-person"></i>
-            <br>
-            <i id="artist-button" onclick="getTopArtists()" class="ion-ios-musical-notes"></i>
-            <br>
-            <div class="ui padded segment form" id="numForm">
-                <input type="range" min="1" max="50" value="20" class="slider" id="numResponses">
-                <p id="number">Results: 20</p>
-            </div>
+
+    <section class="header">
+        <div id="spotifynp">
+            <img src="https://spotify-github-profile.vercel.app/api/view?uid=&cover_image=true&theme=novatorem&show_offline=true&background_color=121212&interchange=false&bar_color=53b14f&bar_color_cover=false" alt="Spotify Now Playing" class="snp">
         </div>
-    </div>
+    </section>
 
-    <!-- Results section on the right -->
-    <div class="results-section">
-    <h1>work in progress</h1>
-
-        <div class="ui eight column centered" id="results-container">
-            <div id="results-header"></div>
-            <br>
-            <div class="ui stackable five column grid container content" id="results"></div>
-        </div>
-    </div>
-
-
-    <script src="index.js"></script>
+    <script src="./index.js"></script>
 </body>
 </html>

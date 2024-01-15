@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Salsa&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Salsa', cursive;
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(120deg, #191414, #1db954, #191414);
+}
+
+.container {
+    text-align: center;
+}
+
+.content {
+    color: #ffffff;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00DA5A;
+    color: #ffffff;
+    padding: 0.5rem 1.4rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: .6s ease;
+    position: relative;
+z-index: 1;
+letter-spacing: -0.2px;
+top: 50%; 
+left: 50%; 
+transform: translate(-50%, -50%); 
+}
+
+.button svg {
+    height: 30px;
+    fill: #ffffff;
+    margin-right: 0.5rem; 
+}
+
+.button:hover {
+    box-shadow: none;
+}
+
