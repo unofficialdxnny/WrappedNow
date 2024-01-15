@@ -89,9 +89,13 @@ function getUserId() {
       },
       success: function(response) {
         user_id = response.id;
-        console.log(response.id)
+        // Retrieve the profile picture
+        let profilePicture = response.images[0].url;
+        // Set the profile picture as the src for the pfp image
+        $('.pfp img').attr('src', profilePicture);
+        console.log(response.id);
       },
-      error: (jqXHR, textStatus, errorThrown) => {
+      error: function(jqXHR, textStatus, errorThrown) {
         ifError(jqXHR.status);
       },
     });
