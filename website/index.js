@@ -82,45 +82,58 @@ function checkWidth() {
 // If user hasn't, prompt him to log in.
 function getUserId() {
   if (access_token) {
-      $.ajax({
-          url: 'https://api.spotify.com/v1/me',
-          headers: {
-              'Authorization': 'Bearer ' + access_token
-          },
-          success: function(response) {
-              user_id = response.id;
-              console.log(response.id);
-
-              // Once user_id is retrieved, update the image src
-              updateImageSrc(user_id);
-          },
-          error: function(jqXHR, textStatus, errorThrown) {
-              ifError(jqXHR.status);
-          },
-      });
+    $.ajax({
+      url: 'https://api.spotify.com/v1/me',
+      headers: {
+        'Authorization': 'Bearer ' + access_token
+      },
+      success: function(response) {
+        user_id = response.id;
+        console.log(response.id)
+      },
+      error: (jqXHR, textStatus, errorThrown) => {
+        ifError(jqXHR.status);
+      },
+    });
   } else {
-      alert('Please log in to Spotify.');
+    alert('Please log in to Spotify.');
   }
 }
 
-// Function to update the image src with the new user_id
-function updateImageSrc(user_id) {
-  const spotifyNPElement = $('#spotifynp');
-  const currentUrl = spotifyNPElement.find('.snp').attr('src');
-  
-  // Construct the URL with the new user_id
-  const baseUrl = 'https://spotify-github-profile.vercel.app/api/view';
-  const queryParams = `?uid=${user_id}&cover_image=true&theme=novatorem&show_offline=true&background_color=121212&interchange=false&bar_color=53b14f&bar_color_cover=false`;
-  const newUrl = baseUrl + queryParams;
 
-  // Update the src attribute of the image with the new URL
-  spotifyNPElement.find('.snp').attr('src', newUrl);
+function getCurrentlyPlaying() {
+  if (access_token) {
+    $.ajax({
+      url: 'https://api.spotify.com/v1/me/player/currently-playing',
+      headers: {
+        'Authorization': 'Bearer ' + access_token
+      },
+      success: function(response) {
+        if (response.item) {
+          displayCurrentlyPlaying(response.item);
+        } else {
+          console.log('No currently playing song.');
+        }
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        ifError(jqXHR.status);
+      },
+    });
+  } else {
+    alert('Please log in to Spotify.');
+  }
 }
 
-// Call getUserId after obtaining the access token
-// Example: In the code where you handle the access token, add this line:
-// access_token = getHashValue('access_token');
-getUserId();
+function displayCurrentlyPlaying(song) {
+  // Update your HTML or use a modal to display the currently playing song information
+  // For example, you can append the information to the header section
+  $('.header').append(`
+    <div id="currently-playing">
+      <h3>Currently Playing:</h3>
+      <p>${song.name} by ${song.artists[0].name}</p>
+    </div>
+  `);
+}
 
 
 // Updated getTopArtists function
