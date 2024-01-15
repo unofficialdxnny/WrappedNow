@@ -82,56 +82,83 @@ function checkWidth() {
 // If user hasn't, prompt him to log in.
 function getUserId() {
   if (access_token) {
-    $.ajax({
-      url: 'https://api.spotify.com/v1/me',
-      headers: {
-        'Authorization': 'Bearer ' + access_token
-      },
-      success: function(response) {
-        user_id = response.id;
-        console.log(response.id)
-      },
-      error: (jqXHR, textStatus, errorThrown) => {
-        ifError(jqXHR.status);
-      },
-    });
-  } else {
-    alert('Please log in to Spotify.');
-  }
-}
-function getUserId() {
-  if (access_token) {
-    $.ajax({
-      url: 'https://api.spotify.com/v1/me',
-      headers: {
-        'Authorization': 'Bearer ' + access_token
-      },
-      success: function(response) {
-        user_id = response.id;
-        console.log(response.id);
+      $.ajax({
+          url: 'https://api.spotify.com/v1/me',
+          headers: {
+              'Authorization': 'Bearer ' + access_token
+          },
+          success: function(response) {
+              user_id = response.id;
+              console.log(response.id);
 
-        // Update the URL with the new user_id
-        updateSpotifyNP(user_id);
-      },
-      error: (jqXHR, textStatus, errorThrown) => {
-        ifError(jqXHR.status);
-      },
-    });
+              // Update the Spotify Now Playing content with the new user_id
+              updateSpotifyNP(user_id);
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+              ifError(jqXHR.status);
+          },
+      });
   } else {
-    alert('Please log in to Spotify.');
+      alert('Please log in to Spotify.');
   }
 }
 
-// Function to update the #spotifynp content with the new URL
+
 function updateSpotifyNP(user_id) {
   const spotifyNPElement = $('#spotifynp');
   const currentUrl = spotifyNPElement.find('.snp').attr('src');
   
-  // Replace the existing uid with the new user_id in the URL
-  const newUrl = currentUrl.replace(/uid=[^&]*/, 'uid=' + user_id);
+  // Construct the URL with the new user_id
+  const baseUrl = 'https://spotify-github-profile.vercel.app/api/view';
+  const queryParams = `?uid=${user_id}&cover_image=true&theme=novatorem&show_offline=true&background_color=121212&interchange=false&bar_color=53b14f&bar_color_cover=false`;
+  const newUrl = baseUrl + queryParams;
 
   // Update the src attribute of the image with the new URL
   spotifyNPElement.find('.snp').attr('src', newUrl);
+}
+
+// Updated getTopArtists function
+function getTopArtists() {
+  $('#artist-button').addClass("loading");
+  if (access_token) {
+      $.ajax({
+          url: 'https://api.spotify.com/v1/me/top/artists',
+          data: {
+              limit: limit,
+              time_range: time_range,
+          },
+          headers: {
+              'Authorization': 'Bearer ' + access_token,
+          },
+          success: function(response) {
+              $('#artist-button').removeClass("loading");
+              $('#results-container').empty();
+              let resultsHtml = '<div class="ui stackable three column grid container content" id="results">';
+              response.items.forEach((item, i) => {
+                  let name = item.name;
+                  let url = item.external_urls.spotify;
+                  let image = item.images[1].url;
+                  resultsHtml += `
+                      <div class="column artist item">
+                          <a href="${url}" target="_blank">
+                              <img src="${image}" class="ui image">
+                          </a>
+                          <h4 class="title">${i + 1}. ${name}</h4>
+                      </div>`;
+              });
+              resultsHtml += '</div>';
+              $('#results-container').html('<h2>Top Artists</h2>' + resultsHtml);
+              artistsdisplayed = true;
+              songsdisplayed = false;
+              checkWidth();
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+              ifError(jqXHR.status);
+          },
+      });
+  } else {
+      alert('Please log in to Spotify.');
+  }
 }
 
 // Updated getTopTracks function
