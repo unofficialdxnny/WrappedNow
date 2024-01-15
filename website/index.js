@@ -89,13 +89,9 @@ function getUserId() {
       },
       success: function(response) {
         user_id = response.id;
-        // Retrieve the profile picture
-        let profilePicture = response.images[0].url;
-        // Set the profile picture as the src for the pfp image
-        $('.pfp img').attr('src', profilePicture);
-        console.log(response.id);
+        console.log(response.id)
       },
-      error: function(jqXHR, textStatus, errorThrown) {
+      error: (jqXHR, textStatus, errorThrown) => {
         ifError(jqXHR.status);
       },
     });
@@ -260,7 +256,7 @@ function initialize() {
   const slider = document.getElementById("numResponses");
   slider.oninput = function() {
     limit = $('#numResponses').val().toString();
-    $('#number').html("Results: " + limit);
+    $('#number').html("");
   }
 
   $('#numResponses').on('change', refresh);
@@ -274,3 +270,40 @@ function initialize() {
     disableControls();
   }
 });
+
+
+
+.results-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+/* Style for individual result items (adjust as needed) */
+.column {
+  width: 30%;
+  margin-bottom: 20px;
+}
+
+.column img {
+  width: 100%;
+  height: auto;
+}
+
+.column h4 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 1115px) {
+  .results-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .column {
+      width: 80%;
+  }
+}

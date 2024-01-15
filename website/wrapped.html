@@ -9,23 +9,28 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
-    
-
     <section class="header">
-        <!-- <div id="spotifynp">
-            <img src="" alt="Spotify Now Playing" class="snp">
-        </div> -->
+        <div id="currently-playing-container"></div>
+    </section>
 
-        <div id="currently-playing-container">
-            
+    <section class="controls">
+        <div class="icons-section">
+            <div class="icons">
+                <i id="track-button" onclick="getTopTracks()" class="ion-person"></i>
+                <br>
+                <i id="artist-button" onclick="getTopArtists()" class="ion-ios-musical-notes"></i>
+                <br>
+                <div class="ui padded segment form" id="numForm">
+                    <input type="range" min="1" max="50" value="20" class="slider" id="numResponses">
+                    <p id="number"></p>
+                </div>
+            </div>
         </div>
     </section>
 
-<section class="controls">
-    <div class="pfp">
-        <img src="" alt="pfp">
-    </div>
-</section>
+    <section class="results-container">
+        <!-- The content will be dynamically populated by JavaScript -->
+    </section>
 
     <script src="./index.js"></script>
 </body>
