@@ -71,10 +71,9 @@ function refresh() {
 }
 
 function checkWidth() {
-  const resultsContainer = $(".glassmorphic-container #results-container");
-  if (resultsContainer.length && window.innerWidth < 1200) {
+  if (window.innerWidth < 1200) {
     $('html, body').animate({
-      scrollTop: resultsContainer.offset().top
+      scrollTop: $("#results-container").offset().top
     }, 500);
   }
 }
