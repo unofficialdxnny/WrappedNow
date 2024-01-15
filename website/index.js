@@ -89,9 +89,10 @@ function getUserId() {
       },
       success: function(response) {
         user_id = response.id;
-        console.log(response.id)
+        console.log(response.id);
+        getCurrentlyPlaying();
       },
-      error: (jqXHR, textStatus, errorThrown) => {
+      error: function(jqXHR, textStatus, errorThrown) {
         ifError(jqXHR.status);
       },
     });
@@ -270,43 +271,37 @@ $(document).ready(function() {
   initialize();
   access_token = getHashValue('access_token');
 
-// Have some funcs enabled.
-function enableControls() {
-  $('#instructions').css('display', 'none');
-  $('#login').css('display', 'none');
-  $('#button-segment').removeClass("disabled");
-  $('#timeForm').removeClass("disabled");
-  $('#numForm').removeClass("disabled");
-}
-
-// Have the buttons disabled. These are being called
-// On HTML with the "id=$"
-// I shouldn't been telling you that. It's 101 HTML
-function disableControls() {
-  $('#button-segment').addClass("disabled");
-  $('#track-button').addClass("disabled");
-  $('#artist-button').addClass("disabled");
-  $('#timeForm').addClass("disabled");
-  $('#numForm').addClass("disabled");
-}
-
-// add some listeners to the controls
-// Again, "id=$"
-function initialize() {
-  $('#timeForm input').on('change', function() {
-    updateRange();
-    refresh();
-  });
-  const slider = document.getElementById("numResponses");
-  slider.oninput = function() {
-    limit = $('#numResponses').val().toString();
-    $('#number').html("Results: " + limit);
+  function enableControls() {
+    $('#instructions').css('display', 'none');
+    $('#login').css('display', 'none');
+    $('#button-segment').removeClass("disabled");
+    $('#timeForm').removeClass("disabled");
+    $('#numForm').removeClass("disabled");
   }
 
-  $('#numResponses').on('change', refresh);
-}
+  function disableControls() {
+    $('#button-segment').addClass("disabled");
+    $('#track-button').addClass("disabled");
+    $('#artist-button').addClass("disabled");
+    $('#timeForm').addClass("disabled");
+    $('#numForm').addClass("disabled");
+  }
 
-  // Enable or disable control based on user's authentication
+  function initialize() {
+    $('#timeForm input').on('change', function() {
+      updateRange();
+      refresh();
+    });
+
+    const slider = document.getElementById("numResponses");
+    slider.oninput = function() {
+      limit = $('#numResponses').val().toString();
+      $('#number').html("Results: " + limit);
+    }
+
+    $('#numResponses').on('change', refresh);
+  }
+
   if (access_token) {
     getUserId();
     enableControls();
